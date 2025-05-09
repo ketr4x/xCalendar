@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'calendar/daily.dart';
-import 'menu.dart';
 import 'widgets/bottom_nav_bar.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -12,15 +9,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int _selectedIndex = 2; // Uaktualniono indeks, bo Settings jest teraz na pozycji 2
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    BottomNavBar.handleNavigation(context, index);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +23,11 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-            ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primary,
@@ -58,10 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
     );
   }
 }
+

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../calendar/landing.dart';
 import '../menu.dart';
-import '../settings.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -25,10 +24,6 @@ class BottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.calendar_today),
           label: 'Calendar',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Settings',
         ),
       ],
       currentIndex: selectedIndex,
@@ -60,16 +55,7 @@ class BottomNavBar extends StatelessWidget {
           );
         }
         break;
-      case 2:
-        if (context.widget is! SettingsPage) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SettingsPage(),
-            ),
-          );
-        }
-        break;
     }
   }
 }
+

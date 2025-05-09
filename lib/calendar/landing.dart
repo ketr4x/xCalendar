@@ -29,7 +29,7 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          "xCalendar",
+          "Calendar",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.normal,
@@ -38,9 +38,18 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
         ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // Dodajemy widok miesięczny na górze
+          const Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: MonthlyScreen(),
+            ),
+          ),
+          // Przyciski na dole
           Padding(
-            padding: const EdgeInsets.only(top: 16.0),
+            padding: const EdgeInsets.only(top: 16.0, bottom: 24.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -55,7 +64,7 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
                         ),
                       );
                     },
-                    child: const Text('Monthly View'),
+                    child: const Text('Weekly View (WIP)'), // TODO: Implement weekly view
                   ),
                 ),
                 Padding(
@@ -75,7 +84,6 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
               ],
             ),
           ),
-          // Tutaj możesz dodać pozostałe widgety
         ],
       ),
       bottomNavigationBar: BottomNavBar(
