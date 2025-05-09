@@ -1,4 +1,4 @@
-# xcalendar
+# xCalendar
 
 Yet another calendar app.
 

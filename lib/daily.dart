@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'settings.dart';
+import 'menu.dart';
 import 'monthly.dart';
-import 'daily.dart';
+import 'views/daily.dart';
 
-class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
+class DailyPage extends StatelessWidget {
+  const DailyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class MenuPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          "Overview",
+          "Daily View",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.normal,
@@ -52,26 +53,26 @@ class MenuPage extends StatelessWidget {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MenuPage(),
+                  ),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.calendar_today),
               title: const Text('Daily View'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DailyPage(),
-                  ),
-                );
+                Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.calendar_month),
-              title: const Text('Month View'),
+              title: const Text('Monthly View'),
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const MonthlyPage(),
@@ -94,40 +95,12 @@ class MenuPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Good Morning, User!", // TODO: Replace with actual user name
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  IconButton(
-                    icon: const Icon(Icons.add_circle),
-                    color: Theme.of(context).colorScheme.primary,
-                    tooltip: 'Add new item',
-                    onPressed: () {
-                      // TODO: Add functionality to add new item
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
+      body: const SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: DailyScreen(),
         ),
       ),
     );
   }
 }
-

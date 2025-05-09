@@ -6,7 +6,7 @@ class SetupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      // TODO: Add setup page content here
     );
   }
 }
