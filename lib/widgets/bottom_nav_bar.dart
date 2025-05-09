@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../calendar/daily.dart';
-import '../calendar/monthly.dart';
+import '../calendar/landing.dart';
 import '../menu.dart';
 import '../settings.dart';
 
@@ -25,11 +24,7 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.calendar_today),
-          label: 'Daily',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_month),
-          label: 'Monthly',
+          label: 'Calendar',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
@@ -56,26 +51,16 @@ class BottomNavBar extends StatelessWidget {
         }
         break;
       case 1:
-        if (context.widget is! DailyPage) {
+        if (context.widget is! CalendarLandingPage) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const DailyPage(),
+              builder: (context) => const CalendarLandingPage(),
             ),
           );
         }
         break;
       case 2:
-        if (context.widget is! MonthlyPage) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const MonthlyPage(),
-            ),
-          );
-        }
-        break;
-      case 3:
         if (context.widget is! SettingsPage) {
           Navigator.pushReplacement(
             context,

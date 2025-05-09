@@ -4,7 +4,6 @@ import '../menu.dart';
 import '../settings.dart';
 import 'monthly.dart';
 
-
 class DailyScreen extends StatefulWidget {
   const DailyScreen({super.key});
 
@@ -185,7 +184,6 @@ class _DailyPageState extends State<DailyPage> {
     BottomNavBar.handleNavigation(context, index);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -199,6 +197,22 @@ class _DailyPageState extends State<DailyPage> {
             color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
+        // Dodajemy przycisk do widoku miesięcznego w AppBar
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.calendar_month),
+            tooltip: 'Monthly View',
+            color: Theme.of(context).colorScheme.onPrimary,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MonthlyPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: const SafeArea(
         child: Padding(
@@ -206,10 +220,10 @@ class _DailyPageState extends State<DailyPage> {
           child: DailyScreen(),
         ),
       ),
-        bottomNavigationBar: BottomNavBar(
-          selectedIndex: _selectedIndex,
-          onItemTapped: _onItemTapped,
-        ),
+      bottomNavigationBar: BottomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
     );
   }
 }

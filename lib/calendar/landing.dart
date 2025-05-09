@@ -3,6 +3,8 @@ import '../settings.dart';
 import '../widgets/bottom_nav_bar.dart';
 import 'daily.dart';
 import 'monthly.dart';
+import 'events.dart';
+
 
 class CalendarLandingPage extends StatefulWidget {
   const CalendarLandingPage({super.key});
@@ -12,7 +14,7 @@ class CalendarLandingPage extends StatefulWidget {
 }
 
 class _CalendarLandingPageState extends State<CalendarLandingPage> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -35,38 +37,46 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Good Morning, User!", // TODO: Replace with actual user name
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  IconButton(
-                    icon: const Icon(Icons.add_circle),
-                    color: Theme.of(context).colorScheme.primary,
-                    tooltip: 'Add new item',
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ElevatedButton(
                     onPressed: () {
-                      // TODO: Add functionality to add new item
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MonthlyPage(),
+                        ),
+                      );
                     },
+                    child: const Text('Monthly View'),
                   ),
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ManageEventsPage(),
+                        ),
+                      );
+                    },
+                    child: const Text('Manage Events'),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          // Tutaj możesz dodać pozostałe widgety
+        ],
       ),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedIndex,

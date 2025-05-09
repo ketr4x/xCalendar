@@ -35,6 +35,20 @@ class _MenuPageState extends State<MenuPage> {
             color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings, color: Theme.of(context).colorScheme.onPrimary,),
+            tooltip: 'Open settings',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SettingsPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -46,7 +60,8 @@ class _MenuPageState extends State<MenuPage> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Good Morning, User!", // TODO: Replace with actual user name
+                      "Good ${DateTime.now().weekday == 1 ? 'monday' : DateTime.now().weekday == 2 ? 'tuesday' : DateTime.now().weekday == 3 ? 'wednesday' :
+                      DateTime.now().weekday == 4 ? 'thursday' : DateTime.now().weekday == 5 ? 'friday' : DateTime.now().weekday == 6 ? 'saturday' : 'sunday'}, User!",  // TODO: Use the actual user's name
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

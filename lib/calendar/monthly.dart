@@ -152,15 +152,6 @@ class MonthlyPage extends StatefulWidget {
 }
 
 class _MonthlyPageState extends State<MonthlyPage> {
-  int _selectedIndex = 2;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    BottomNavBar.handleNavigation(context, index);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,16 +165,18 @@ class _MonthlyPageState extends State<MonthlyPage> {
             color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: MonthlyScreen(),
         ),
-      ),
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
       ),
     );
   }

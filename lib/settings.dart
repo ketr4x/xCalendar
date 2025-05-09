@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'calendar/daily.dart';
-import 'calendar/monthly.dart';
 import 'menu.dart';
 import 'widgets/bottom_nav_bar.dart';
 
@@ -13,7 +12,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 2; // Uaktualniono indeks, bo Settings jest teraz na pozycji 2
 
   void _onItemTapped(int index) {
     setState(() {
