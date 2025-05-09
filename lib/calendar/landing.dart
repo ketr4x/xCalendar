@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import '../settings.dart';
+import '../widgets/bottom_nav_bar.dart';
+import 'daily.dart';
+import 'monthly.dart';
 
-import 'calendar/daily.dart';
-import 'calendar/monthly.dart';
-import 'settings.dart';
-import 'widgets/bottom_nav_bar.dart';
-
-class MenuPage extends StatefulWidget {
-  const MenuPage({super.key});
+class CalendarLandingPage extends StatefulWidget {
+  const CalendarLandingPage({super.key});
 
   @override
-  State<MenuPage> createState() => _MenuPageState();
+  State<CalendarLandingPage> createState() => _CalendarLandingPageState();
 }
 
-class _MenuPageState extends State<MenuPage> {
+class _CalendarLandingPageState extends State<CalendarLandingPage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

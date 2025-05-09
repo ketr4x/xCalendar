@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../menu.dart';
+import '../settings.dart';
+import '../widgets/bottom_nav_bar.dart';
+import 'daily.dart';
+
 class MonthlyScreen extends StatefulWidget {
   const MonthlyScreen({super.key});
 
@@ -136,5 +141,50 @@ class _MonthlyScreenState extends State<MonthlyScreen> {
       'November',
       'December'
     ][monthNumber - 1];
+  }
+}
+
+class MonthlyPage extends StatefulWidget {
+  const MonthlyPage({super.key});
+
+  @override
+  State<MonthlyPage> createState() => _MonthlyPageState();
+}
+
+class _MonthlyPageState extends State<MonthlyPage> {
+  int _selectedIndex = 2;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    BottomNavBar.handleNavigation(context, index);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
+          "Monthly View",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.normal,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
+      ),
+      body: const SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: MonthlyScreen(),
+        ),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
+    );
   }
 }

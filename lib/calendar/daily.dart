@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_nav_bar.dart';
+import '../menu.dart';
+import '../settings.dart';
+import 'monthly.dart';
+
 
 class DailyScreen extends StatefulWidget {
   const DailyScreen({super.key});
@@ -161,4 +166,50 @@ class Event {
     required this.endTime,
     required this.color,
   });
+}
+
+class DailyPage extends StatefulWidget {
+  const DailyPage({super.key});
+
+  @override
+  State<DailyPage> createState() => _DailyPageState();
+}
+
+class _DailyPageState extends State<DailyPage> {
+  int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    BottomNavBar.handleNavigation(context, index);
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
+          "Daily View",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.normal,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
+      ),
+      body: const SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: DailyScreen(),
+        ),
+      ),
+        bottomNavigationBar: BottomNavBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
+        ),
+    );
+  }
 }
