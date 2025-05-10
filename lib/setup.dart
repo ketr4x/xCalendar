@@ -20,7 +20,8 @@ class _SetupPageState extends State<SetupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
+      // TODO: Implement setup page
+      // Google Authentication etc.
     );
   }
 }
