@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../menu.dart';
 import '../settings.dart';
 import '../widgets/bottom_nav_bar.dart';
@@ -97,8 +96,7 @@ class _MonthlyScreenState extends State<MonthlyScreen> {
         const SizedBox(width: 8, height: 8),
         Flexible(
           child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 7),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 7),
             itemCount: datesGrid.length,
             itemBuilder: (context, index) {
               DateTime date = datesGrid[index];
@@ -107,8 +105,7 @@ class _MonthlyScreenState extends State<MonthlyScreen> {
                 padding: const EdgeInsets.all(4.0),
                 child: CircleAvatar(
                   backgroundColor: isCurrentMonth
-                      ? Theme.of(context).colorScheme.primary
-                      : Colors.transparent,
+                      ? Theme.of(context).colorScheme.primary : Colors.transparent,
                   child: Text(
                     date.day.toString(),
                     style: TextStyle(

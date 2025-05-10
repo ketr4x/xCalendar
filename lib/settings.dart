@@ -62,7 +62,6 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Zmieniam układ przycisków na Row, aby były obok siebie
             Row(
               children: [
                 Expanded(

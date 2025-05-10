@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'daily.dart';
 import 'monthly.dart';
 import '../settings.dart';

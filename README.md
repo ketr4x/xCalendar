@@ -21,3 +21,9 @@ Coming soon!
 - Clock
 - Calculator
 - Password Manager
+- Currency & Unit Converter
+
+## Coming Soon
+- iOS App
+- Web App
+- And more!
