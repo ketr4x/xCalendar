@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import '../widgets/bottom_nav_bar.dart';
 
-class PWMLandingPage extends StatefulWidget {
-  const PWMLandingPage({super.key});
+class TasksLandingPage extends StatefulWidget {
+  const TasksLandingPage({super.key});
 
   @override
-  State<PWMLandingPage> createState() => _PWMLandingPageState();
+  State<TasksLandingPage> createState() => _TasksLandingPageState();
 }
 
-class _PWMLandingPageState extends State<PWMLandingPage> {
-  int _selectedIndex = 3;
+class _TasksLandingPageState extends State<TasksLandingPage> {
+  int _selectedIndex = 4;
 
   void _onItemTapped(int index) {
     setState(() {

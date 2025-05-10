@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../calendar/landing.dart';
 import '../menu.dart';
+import '../clock/landing.dart';
+import '../passwords/landing.dart';
+import '../tasks/landing.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -25,6 +28,18 @@ class BottomNavBar extends StatelessWidget {
           icon: Icon(Icons.calendar_today),
           label: 'Calendar',
         ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.timer),
+          label: 'Clock',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.key_outlined),
+          label: 'Passwords',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.task_alt_sharp),
+          label: 'Tasks',
+        )
       ],
       currentIndex: selectedIndex,
       selectedItemColor: Theme.of(context).colorScheme.primary,
@@ -51,6 +66,36 @@ class BottomNavBar extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => const CalendarLandingPage(),
+            ),
+          );
+        }
+        break;
+      case 2:
+        if (context.widget is! ClockLandingPage) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ClockLandingPage(),
+            ),
+          );
+        }
+        break;
+      case 3:
+        if (context.widget is! PWMLandingPage) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PWMLandingPage(),
+            ),
+          );
+        }
+        break;
+      case 4:
+        if (context.widget is! TasksLandingPage) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TasksLandingPage(),
             ),
           );
         }

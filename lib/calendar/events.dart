@@ -44,7 +44,7 @@ class _ManageEventsPageState extends State<ManageEventsPage> {
               child: Row(
                 children: [
                   const SizedBox(width: 8),
-                  //TODO: Add current and upcoming events
+                  // TODO: Add current and upcoming events
                 ],
               ),
             ),

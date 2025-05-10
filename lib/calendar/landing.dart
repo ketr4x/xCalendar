@@ -40,14 +40,12 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Dodajemy widok miesięczny na górze
           const Expanded(
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: MonthlyScreen(),
             ),
           ),
-          // Przyciski na dole
           Padding(
             padding: const EdgeInsets.only(top: 16.0, bottom: 24.0),
             child: Row(
