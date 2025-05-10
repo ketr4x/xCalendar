@@ -47,41 +47,45 @@ class BottomNavBar extends StatelessWidget {
     switch (index) {
       case 0:
         if (context.widget is! MenuPage) {
-          Navigator.pushReplacement(
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
               builder: (context) => const MenuPage(),
-            ),
+            ), 
+            (route) => false,
           );
         }
         break;
       case 1:
         if (context.widget is! CalendarLandingPage) {
-          Navigator.pushReplacement(
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
               builder: (context) => const CalendarLandingPage(),
             ),
+            (route) => false,
           );
         }
         break;
       case 2:
         if (context.widget is! PWMLandingPage) {
-          Navigator.pushReplacement(
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
               builder: (context) => const PWMLandingPage(),
             ),
+            (route) => false,
           );
         }
         break;
       case 3:
         if (context.widget is! CalculatorLandingPage) {
-          Navigator.pushReplacement(
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
               builder: (context) => const CalculatorLandingPage(),
             ),
+            (route) => false,
           );
         }
         break;

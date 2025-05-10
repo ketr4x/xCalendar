@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 import '../../widgets/bottom_nav_bar.dart';
 import '../../widgets/drawer.dart';
 
-
-class PWMLandingPage extends StatefulWidget {
-  const PWMLandingPage({super.key});
+class CurrencyLandingPage extends StatefulWidget {
+  const CurrencyLandingPage({super.key});
 
   @override
-  State<PWMLandingPage> createState() => _PWMLandingPageState();
+  State<CurrencyLandingPage> createState() => _CurrencyLandingPageState();
 }
 
-class _PWMLandingPageState extends State<PWMLandingPage> {
-  int _selectedIndex = 2;
+class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
+  int _selectedIndex = 3;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,7 +26,7 @@ class _PWMLandingPageState extends State<PWMLandingPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          "Password Manager",
+          "Currency",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.normal,
@@ -34,9 +34,9 @@ class _PWMLandingPageState extends State<PWMLandingPage> {
           ),
         ),
       ),
-      drawer: AppDrawer(category: 'Other'),
+      drawer: AppDrawer(category: 'Math'),
       body: Column(
-
+        // TODO: Implement the currency converter UI
       ),
       bottomNavigationBar: BottomNavBar(
         selectedIndex: _selectedIndex,

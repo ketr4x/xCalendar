@@ -4,7 +4,7 @@ import '../../widgets/bottom_nav_bar.dart';
 import 'daily.dart';
 import 'monthly.dart';
 import 'events.dart';
-
+import '../../widgets/drawer.dart';
 
 class CalendarLandingPage extends StatefulWidget {
   const CalendarLandingPage({super.key});
@@ -37,6 +37,7 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
           ),
         ),
       ),
+      drawer: AppDrawer(category: 'Time'),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/drawer.dart';
 
 class CalculatorLandingPage extends StatefulWidget {
   const CalculatorLandingPage({super.key});
@@ -40,6 +41,7 @@ class _CalculatorLandingPageState extends State<CalculatorLandingPage> {
           ),
         ),
       ),
+      drawer: AppDrawer(category: 'Math'),
       body: Column(
         children: [
           Expanded(
