@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import '../calendar/landing.dart';
+import '../time/calendar/landing.dart';
 import '../menu.dart';
-import '../clock/landing.dart';
-import '../passwords/landing.dart';
-import '../tasks/landing.dart';
+import '../other/passwords/landing.dart';
+import '../math/calculator/landing.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -25,20 +24,16 @@ class BottomNavBar extends StatelessWidget {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_today),
-          label: 'Calendar',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.timer),
-          label: 'Clock',
+          icon: Icon(Icons.watch_later),
+          label: 'Time',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.key_outlined),
-          label: 'Passwords',
+          label: 'Other',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.task_alt_sharp),
-          label: 'Tasks',
+          icon: Icon(Icons.calculate),
+          label: 'Math',
         )
       ],
       currentIndex: selectedIndex,
@@ -71,16 +66,6 @@ class BottomNavBar extends StatelessWidget {
         }
         break;
       case 2:
-        if (context.widget is! ClockLandingPage) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const ClockLandingPage(),
-            ),
-          );
-        }
-        break;
-      case 3:
         if (context.widget is! PWMLandingPage) {
           Navigator.pushReplacement(
             context,
@@ -90,12 +75,12 @@ class BottomNavBar extends StatelessWidget {
           );
         }
         break;
-      case 4:
-        if (context.widget is! TasksLandingPage) {
+      case 3:
+        if (context.widget is! CalculatorLandingPage) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const TasksLandingPage(),
+              builder: (context) => const CalculatorLandingPage(),
             ),
           );
         }

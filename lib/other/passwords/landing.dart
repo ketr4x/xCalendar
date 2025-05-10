@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
+import '../../widgets/bottom_nav_bar.dart';
 
 class PWMLandingPage extends StatefulWidget {
   const PWMLandingPage({super.key});
@@ -9,7 +9,7 @@ class PWMLandingPage extends StatefulWidget {
 }
 
 class _PWMLandingPageState extends State<PWMLandingPage> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {

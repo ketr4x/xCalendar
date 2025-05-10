@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -71,10 +72,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       padding: const EdgeInsets.all(16.0),
                     ),
                     onPressed: () {
-                      // TODO: Add dark mode functionality here when implemented
+                      AdaptiveTheme.of(context).toggleThemeMode();
                     },
                     child: Text(
-                        'Dark Mode',
+                        AdaptiveTheme.of(context).mode == AdaptiveThemeMode.light ? 'Dark Mode' : 'Light Mode',
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.onPrimary
                         )

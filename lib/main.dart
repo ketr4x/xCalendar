@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'menu.dart';
 
 void main() {
@@ -12,17 +12,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'xCalendar',
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          useMaterial3: true
+    return AdaptiveTheme(
+      light: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        useMaterial3: true,
       ),
-      home: const LaunchHandler(),
+      dark: ThemeData(
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent, brightness: Brightness.dark),
+        useMaterial3: true,
+      ),
+      initial: AdaptiveThemeMode.light,
+      builder: (theme, darkTheme) => MaterialApp(
+        title: 'xCalendar',
+        theme: theme,
+        darkTheme: darkTheme,
+        home: const LaunchHandler(),
+      ),
     );
   }
 }
-
 class LaunchHandler extends StatefulWidget {
   const LaunchHandler({super.key});
 

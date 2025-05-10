@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'calendar/daily.dart';
-import 'calendar/monthly.dart';
 import 'settings.dart';
 import 'widgets/bottom_nav_bar.dart';
 

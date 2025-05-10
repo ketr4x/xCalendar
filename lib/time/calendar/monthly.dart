@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../menu.dart';
-import '../settings.dart';
-import '../widgets/bottom_nav_bar.dart';
+import '../../menu.dart';
+import '../../settings.dart';
+import '../../widgets/bottom_nav_bar.dart';
 import 'daily.dart';
 
 class MonthlyScreen extends StatefulWidget {

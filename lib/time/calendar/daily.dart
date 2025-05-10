@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
-import '../menu.dart';
-import '../settings.dart';
+import '../../widgets/bottom_nav_bar.dart';
+import '../../menu.dart';
+import '../../settings.dart';
 import 'monthly.dart';
 
 class DailyScreen extends StatefulWidget {
@@ -197,7 +197,6 @@ class _DailyPageState extends State<DailyPage> {
             color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        // Dodajemy przycisk do widoku miesięcznego w AppBar
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.calendar_month),

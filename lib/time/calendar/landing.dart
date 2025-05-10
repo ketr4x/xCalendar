@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../settings.dart';
-import '../widgets/bottom_nav_bar.dart';
+import '../../settings.dart';
+import '../../widgets/bottom_nav_bar.dart';
 import 'daily.dart';
 import 'monthly.dart';
 import 'events.dart';

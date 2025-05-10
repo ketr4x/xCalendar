@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
+import '../../widgets/bottom_nav_bar.dart';
 
-class TasksLandingPage extends StatefulWidget {
-  const TasksLandingPage({super.key});
+class ClockLandingPage extends StatefulWidget {
+  const ClockLandingPage({super.key});
 
   @override
-  State<TasksLandingPage> createState() => _TasksLandingPageState();
+  State<ClockLandingPage> createState() => _ClockLandingPageState();
 }
 
-class _TasksLandingPageState extends State<TasksLandingPage> {
-  int _selectedIndex = 4;
+class _ClockLandingPageState extends State<ClockLandingPage> {
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -24,7 +24,7 @@ class _TasksLandingPageState extends State<TasksLandingPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          "Password Manager",
+          "Clock",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.normal,
