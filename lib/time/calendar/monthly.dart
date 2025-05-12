@@ -101,17 +101,27 @@ class _MonthlyScreenState extends State<MonthlyScreen> {
             itemBuilder: (context, index) {
               DateTime date = datesGrid[index];
               bool isCurrentMonth = date.month == currentMonth.month;
-              return Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: CircleAvatar(
-                  backgroundColor: isCurrentMonth
-                      ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                  child: Text(
-                    date.day.toString(),
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: isCurrentMonth ? Colors.black : Colors.grey,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DailyPage(selectedDate: date),
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CircleAvatar(
+                    backgroundColor: isCurrentMonth
+                        ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                    child: Text(
+                      date.day.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: isCurrentMonth ? Colors.black : Colors.grey,
+                      ),
                     ),
                   ),
                 ),
@@ -178,3 +188,4 @@ class _MonthlyPageState extends State<MonthlyPage> {
     );
   }
 }
+

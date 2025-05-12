@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xcalendar/time/calendar/weekly.dart';
 import '../../settings.dart';
 import '../../widgets/bottom_nav_bar.dart';
 import 'daily.dart';
@@ -28,6 +29,21 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.calendar_view_week_outlined),
+            tooltip: 'Weekly View',
+            color: Theme.of(context).colorScheme.onPrimary,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WeeklyPage(),
+                ),
+              );
+            },
+          ),
+        ],
         title: Text(
           "Calendar",
           style: TextStyle(
@@ -52,20 +68,6 @@ class _CalendarLandingPageState extends State<CalendarLandingPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MonthlyPage(),
-                        ),
-                      );
-                    },
-                    child: const Text('Weekly View (WIP)'), // TODO: Implement weekly view
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: ElevatedButton(

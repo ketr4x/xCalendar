@@ -32,11 +32,12 @@ dependencies:
     sdk: flutter
   sqflite: any
   path_provider: any
-  intl: any
+  intl: ^0.18.0
   cupertino_icons: ^1.0.8
   shared_preferences: any
   math_expressions: ^2.4.0
   adaptive_theme: ^3.7.0
+  timezone: ^0.9.2
 
 dev_dependencies:
   flutter_test:

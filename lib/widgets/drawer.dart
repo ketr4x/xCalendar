@@ -3,6 +3,9 @@ import '../time/calendar/landing.dart';
 import '../math/calculator/landing.dart';
 import '../other/passwords/landing.dart';
 import '../time/clock/landing.dart';
+import '../time/stopwatch/landing.dart';
+import '../math/currencies/landing.dart';
+import '../math/units/landing.dart';
 
 class AppDrawer extends StatelessWidget {
   final dynamic category;
@@ -65,7 +68,14 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               title: const Text('Stopwatch'),
               onTap: () {
-                // Update the state of the app.
+                if (ModalRoute.of(context)?.settings.name != '/stopwatch') {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SWLandingPage(),
+                    ),
+                  );
+                }
               },
             ),
             ListTile(
@@ -149,7 +159,27 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               title: const Text('Unit Converter'),
               onTap: () {
-                // Update the state of the app.
+                if (ModalRoute.of(context)?.settings.name != '/units') {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UnitLandingPage(),
+                    ),
+                  );
+                }
+              },
+            ),
+            ListTile(
+              title: const Text('Currency Converter'),
+              onTap: () {
+                if (ModalRoute.of(context)?.settings.name != '/currency') {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CurrencyLandingPage(),
+                    ),
+                  );
+                }
               },
             ),
           ],

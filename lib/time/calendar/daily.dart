@@ -5,7 +5,9 @@ import '../../settings.dart';
 import 'monthly.dart';
 
 class DailyScreen extends StatefulWidget {
-  const DailyScreen({super.key});
+  final DateTime? initialDate;
+
+  const DailyScreen({super.key, this.initialDate});
 
   @override
   State<DailyScreen> createState() => _DailyScreenState();
@@ -18,7 +20,7 @@ class _DailyScreenState extends State<DailyScreen> {
   @override
   void initState() {
     super.initState();
-    selectedDate = DateTime.now();
+    selectedDate = widget.initialDate ?? DateTime.now();
     dayEvents = _generateMockEvents(selectedDate);
   }
 
@@ -50,7 +52,7 @@ class _DailyScreenState extends State<DailyScreen> {
       'Saturday',
       'Sunday'
     ];
-    
+
     List<String> months = [
       'January',
       'February',
@@ -65,7 +67,7 @@ class _DailyScreenState extends State<DailyScreen> {
       'November',
       'December'
     ];
-    
+
     return '${weekdays[date.weekday - 1]}, ${months[date.month - 1]} ${date.day}, ${date.year}';
   }
 
@@ -168,21 +170,15 @@ class Event {
 }
 
 class DailyPage extends StatefulWidget {
-  const DailyPage({super.key});
+  final DateTime? selectedDate;
+
+  const DailyPage({super.key, this.selectedDate});
 
   @override
   State<DailyPage> createState() => _DailyPageState();
 }
 
 class _DailyPageState extends State<DailyPage> {
-  int _selectedIndex = 1;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    BottomNavBar.handleNavigation(context, index);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -197,31 +193,18 @@ class _DailyPageState extends State<DailyPage> {
             color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.calendar_month),
-            tooltip: 'Monthly View',
-            color: Theme.of(context).colorScheme.onPrimary,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MonthlyPage(),
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-      body: const SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: DailyScreen(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: DailyScreen(initialDate: widget.selectedDate),
+        ),
       ),
     );
   }

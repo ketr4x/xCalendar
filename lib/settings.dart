@@ -24,6 +24,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 SizedBox(height: 8),
                 Text('Developed by:'),
                 Text('Bartosz "ketr4x" Kosno'),
+                SizedBox(height: 8),
+                Text('Made for the HackClub Neighborhood Hackathon'),
                 SizedBox(height: 16),
                 Text('Version: 0.0.1+dev'),
                 SizedBox(height: 8),
@@ -46,6 +48,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDarkMode = AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark;
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -66,19 +70,29 @@ class _SettingsPageState extends State<SettingsPage> {
             Row(
               children: [
                 Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).colorScheme.primary,
+                  child: Card(
+                    child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                    ),
-                    onPressed: () {
-                      AdaptiveTheme.of(context).toggleThemeMode();
-                    },
-                    child: Text(
-                        AdaptiveTheme.of(context).mode == AdaptiveThemeMode.light ? 'Dark Mode' : 'Light Mode',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimary
-                        )
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            isDarkMode ? 'Dark Mode' : 'Light Mode',
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          Switch(
+                            value: isDarkMode,
+                            onChanged: (bool value) async {
+                              if (value) {
+                                AdaptiveTheme.of(context).setDark();
+                              } else {
+                                AdaptiveTheme.of(context).setLight();
+                              }
+                              setState(() {});
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -106,3 +120,4 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 }
+

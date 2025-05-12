@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/drawer.dart';
 
 class TasksLandingPage extends StatefulWidget {
   const TasksLandingPage({super.key});
@@ -32,6 +33,7 @@ class _TasksLandingPageState extends State<TasksLandingPage> {
           ),
         ),
       ),
+      drawer: AppDrawer(category: 'Time'),
       body: Column(
 
       ),

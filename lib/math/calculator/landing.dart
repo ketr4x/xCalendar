@@ -105,7 +105,7 @@ class _CalculatorLandingPageState extends State<CalculatorLandingPage> {
                                   backgroundColor: Theme.of(context).colorScheme.primary,
                                   foregroundColor: Theme.of(context).colorScheme.onPrimary,
                                   shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                                    borderRadius: BorderRadius.all(Radius.circular(45)),
                                   ),
                                   padding: EdgeInsets.zero,
                                 ),
@@ -161,7 +161,7 @@ class _CalculatorLandingPageState extends State<CalculatorLandingPage> {
             foregroundColor: isOperator ? Theme.of(context).colorScheme.onPrimary : null,
             shape: const CircleBorder(),
             padding: EdgeInsets.zero,
-            minimumSize: const Size(80, 80),
+            minimumSize: const Size(90, 90),
           ),
           child: Text(
             text,
@@ -229,6 +229,17 @@ class _CalculatorLandingPageState extends State<CalculatorLandingPage> {
           equation = equation + buttonText;
         }
       }
-    });
+      /**
+      if (equation.length >= 12 && equation == currentEquation) {
+        var eValExp = double.parse(equation).toStringAsExponential(10);
+        var eParts = eValExp.split('e');
+        double eValue = double.parse(eParts[0]);
+        if (eValue == eValue.truncateToDouble()) {
+          eParts[0] = eValue.truncateToDouble().toString();
+        }
+        currentEquation = eParts.join('e');
+      } */ // TODO: Fix this
+    }
+    );
   }
 }

@@ -11,14 +11,6 @@ class ManageEventsPage extends StatefulWidget {
 }
 
 class _ManageEventsPageState extends State<ManageEventsPage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    BottomNavBar.handleNavigation(context, index);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +40,6 @@ class _ManageEventsPageState extends State<ManageEventsPage> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
       ),
     );
   }

@@ -26,7 +26,7 @@ class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          "Currency",
+          "Currency Converter",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.normal,
