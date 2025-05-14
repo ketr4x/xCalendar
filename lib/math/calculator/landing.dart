@@ -98,7 +98,7 @@ class _CalculatorLandingPageState extends State<CalculatorLandingPage> {
                           Expanded(
                             flex: 1,
                             child: Container(
-                              margin: const EdgeInsets.all(1.0),
+                              margin: const EdgeInsets.fromLTRB(10, 1, 10, 1),
                               child: ElevatedButton(
                                 onPressed: () => buttonPressed('+'),
                                 style: ElevatedButton.styleFrom(

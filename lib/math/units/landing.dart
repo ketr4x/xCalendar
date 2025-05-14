@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/bottom_nav_bar.dart';
 import '../../widgets/drawer.dart';
-import 'converter.dart';
+import 'converter_page.dart';
 
 class UnitLandingPage extends StatefulWidget {
   const UnitLandingPage({super.key});
@@ -22,6 +22,21 @@ class _UnitLandingPageState extends State<UnitLandingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, List<String>> units = {
+      'Length': ['Millimeter', 'Centimeter', 'Meter', 'Kilometer', 'Inch', 'Foot', 'Yard', 'Mile', 'Nautical mile'],
+      'Area': ['Square millimeter', 'Square centimeter', 'Square meter', 'Hectare', 'Square kilometer', 'Square inch', 'Square foot', 'Square yard', 'Acre', 'Square mile'],
+      'Volume': ['Milliliter', 'Centiliter', 'Liter', 'Cubic meter', 'Cubic inch', 'Cubic foot', 'Fluid ounce', 'Cup', 'Pint', 'Quart', 'Gallon'],
+      'Weight': ['Milligram', 'Gram', 'Kilogram', 'Tonne', 'Ounce', 'Pound', 'Stone', 'US ton', 'Imperial ton'],
+      'Temperature': ['Celsius', 'Fahrenheit', 'Kelvin'],
+      'Time': ['Nanosecond', 'Microsecond', 'Millisecond', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year', 'Decade', 'Century'],
+      'Speed': ['Meter per second', 'Kilometer per hour', 'Mile per hour', 'Knot', 'Foot per second'],
+      'Pressure': ['Pascal', 'Kilopascal', 'Bar', 'Atmosphere', 'Pound per square inch', 'Torr', 'Millimeter of mercury'],
+      'Energy': ['Joule', 'Kilojoule', 'Calorie', 'Kilocalorie', 'Watt-hour', 'Kilowatt-hour', 'Electronvolt', 'British thermal unit'],
+      'Power': ['Watt', 'Kilowatt', 'Horsepower', 'Megawatt', 'Gigawatt'],
+      'Data': ['Bit', 'Byte', 'Kilobyte', 'Megabyte', 'Gigabyte', 'Terabyte', 'Petabyte'],
+      'Angle': ['Degree', 'Radian', 'Gradian', 'Minute of arc', 'Second of arc', 'Revolution']
+    };
+
     final unitCategories = [
       {
         'name': 'Length',
@@ -69,14 +84,14 @@ class _UnitLandingPageState extends State<UnitLandingPage> {
         'color': Colors.amber.shade700,
       },
       {
+        'name': 'Power',
+        'icon': Icons.flash_on,
+        'color': Colors.deepOrange.shade700,
+      },
+      {
         'name': 'Data',
         'icon': Icons.storage,
         'color': Colors.brown.shade700,
-      },
-      {
-        'name': 'Currency',
-        'icon': Icons.attach_money,
-        'color': Colors.green.shade800,
       },
       {
         'name': 'Angle',
@@ -132,7 +147,7 @@ class _UnitLandingPageState extends State<UnitLandingPage> {
                     color: category['color'] as Color,
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => UnitConvertPage(category: category['name'] as String)),
+                      MaterialPageRoute(builder: (context) => UnitConvertPage(category: category['name'] as String, units: units[category['name']] as List<String>)),
                     ),
                   );
                 },
@@ -170,11 +185,12 @@ class UnitCategoryButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(16.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(16.0),
+          border: Border.all(color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3), width: 2),
+          color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.3),
+              color: Colors.grey.withValues(alpha: 0.2),
               spreadRadius: 1,
               blurRadius: 4,
               offset: const Offset(0, 2),
@@ -202,7 +218,7 @@ class UnitCategoryButton extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: FontWeight.w500,
-                color: Colors.grey.shade800,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ],
