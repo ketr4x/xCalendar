@@ -1,4 +1,4 @@
-package com.ketr4x.xcalendar.xcalendar
+package com.ketr4x.xcalendar
 
 import io.flutter.embedding.android.FlutterActivity
 

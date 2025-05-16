@@ -436,12 +436,12 @@ class SmallClockWidget extends StatelessWidget {
   final VoidCallback onSelect;
 
   const SmallClockWidget({
-    Key? key,
+    super.key,
     required this.timezone,
     required this.time,
     required this.onRemove,
     required this.onSelect,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
