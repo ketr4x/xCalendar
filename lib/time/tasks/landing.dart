@@ -10,7 +10,7 @@ class TasksLandingPage extends StatefulWidget {
 }
 
 class _TasksLandingPageState extends State<TasksLandingPage> {
-  int _selectedIndex = 4;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../widgets/bottom_nav_bar.dart';
 import '../../widgets/drawer.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 class CurrencyLandingPage extends StatefulWidget {
   const CurrencyLandingPage({super.key});
@@ -11,6 +14,9 @@ class CurrencyLandingPage extends StatefulWidget {
 }
 
 class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
+  Map<String, double> currencies = {};
+
+
   int _selectedIndex = 3;
 
   void _onItemTapped(int index) {
@@ -36,7 +42,7 @@ class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
       ),
       drawer: AppDrawer(category: 'Math'),
       body: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -49,81 +55,49 @@ class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
                     color: Colors.grey.withOpacity(0.2),
                     spreadRadius: 1,
                     blurRadius: 4,
-                    offset: const Offset(0, 2),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: TextField(
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        style: TextStyle(color: Theme.of(context).colorScheme.surface),
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(color: Theme.of(context).colorScheme.surface),
-                          hintText: 'Enter value',
-                        ),
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*$')),
-                        ],
-                        onChanged: (text) {
-                          if (text.isNotEmpty) {
-                            setState(() {
-                              value = double.tryParse(text) ?? 0.0;
-                            });
-                          } else {
-                            setState(() {
-                              value = 0.0;
-                            });
-                          }
-                        },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                      labelStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.onSecondary,
                       ),
-                    ),
-                    const SizedBox(width: 1,),
-                    Expanded(
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                            dropdownColor: Theme.of(context).colorScheme.surface,
-                            style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
-                            value: selectedFromUnit,
-                            icon: Icon(
-                              Icons.arrow_drop_down,
-                              color: Theme.of(context).colorScheme.primary,),
-                            selectedItemBuilder: (BuildContext context) {
-                              return units.map<Widget>((String value) {
-                                return Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    value,
-                                    style: TextStyle(
-                                      color: Theme.of(context).colorScheme.onSecondary,
-                                    ),
-                                  ),
-                                );
-                              }).toList();
-                            },
-                            items: units.map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              if (newValue != null) {
-                                setState(() {
-                                  selectedFromUnit = newValue;
-                                });
-                              }
-                            }
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d*')),
+                    ],
+                  onChanged: (text) {
+                      // TODO: Handle text change
+                    },
+                  ),
+                  const Spacer(),
+                  DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      items: <String>['USD', 'EUR', 'GBP'].map((String inputCurrency) {
+                        return DropdownMenuItem<String>(
+                          value: inputCurrency,
+                          child: Text(inputCurrency),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+
+                      }
+                    )
+                  ),
+                ],
               ),
             ),
           ],

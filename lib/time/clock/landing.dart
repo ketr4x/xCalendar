@@ -17,7 +17,7 @@ class ClockLandingPage extends StatefulWidget {
 }
 
 class _ClockLandingPageState extends State<ClockLandingPage> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 1;
   late Timer _timer;
   DateTime _currentTime = DateTime.now();
   String _selectedTimezone = DateTime.now().timeZoneName;

@@ -12,7 +12,7 @@ class SWLandingPage extends StatefulWidget {
 }
 
 class _SWLandingPageState extends State<SWLandingPage> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 1;
   bool _isRunning = false;
   Stopwatch _stopwatch = Stopwatch();
   Timer? _timer;
