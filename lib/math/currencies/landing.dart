@@ -14,7 +14,7 @@ class CurrencyLandingPage extends StatefulWidget {
 }
 
 class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
-  Map<String, double> currencies = {};
+  List<String> currencies = [];
 
 
   int _selectedIndex = 3;
@@ -59,11 +59,14 @@ class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
                   ),
                 ],
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Row( // TODO: Change the row to the one from the converter page
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextField(
                     decoration: InputDecoration(
+                      constraints: const BoxConstraints(
+                        maxWidth: 300,
+                      ),
                       labelText: 'Amount',
                       labelStyle: TextStyle(
                         color: Theme.of(context).colorScheme.onSecondary,
@@ -86,7 +89,7 @@ class _CurrencyLandingPageState extends State<CurrencyLandingPage> {
                   const Spacer(),
                   DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
-                      items: <String>['USD', 'EUR', 'GBP'].map((String inputCurrency) {
+                      items: currencies.map((String inputCurrency) {
                         return DropdownMenuItem<String>(
                           value: inputCurrency,
                           child: Text(inputCurrency),
